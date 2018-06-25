@@ -68,7 +68,7 @@ const DoctorModel = mongoose.model('Doctor', DoctorSchema)
 const PatientModel = mongoose.model('Patient', PatientSchema)
 const VisitModel = mongoose.model('Visit', VisitSchema)
 
-modules.exports = {
+module.exports = {
     DoctorModel,
     PatientModel,
     VisitModel
