@@ -2,10 +2,14 @@
   "name": "remr",
   "version": "0.0.0",
   "private": true,
+  "engines": {
+    "node": "8.6.0"
+  },
   "scripts": {
     "start": "node ./bin/www",
     "dev": "concurrently \"nodemon bin/www\" \"cd ./client  && npm start \" ",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd client && npm install && npm run build"
   },
   "dependencies": {
     "concurrently": "^3.6.0",
