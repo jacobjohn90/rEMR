@@ -9,10 +9,10 @@ mongoose.Promise = global.Promise;
 mongoose.connect(process.env.MONGODB_URI);
 
 const connection = mongoose.connection;
-connection.on('connected', ()=> {
+connection.on('connected', () => {
     console.log('Mongoose Connected Successfully')
 });
-connection.on('error', (err)=> {
+connection.on('error', (err) => {
     console.log('Mongoose could not Connected: ' + err);
 })
 
@@ -26,8 +26,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(express.static(__dirname + '/client/build/'));
+app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/client/build/index.html')
+})
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
