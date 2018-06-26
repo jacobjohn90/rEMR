@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Doctor extends Component {
     
+    handleDelete = () => {
+        const doctorId = this.props.match.params.doctorId
+        axios.delete(`/api/doctors/${doctorId}`).then((res)=>{
+            this.props.history.push('/')
+            console.log(res.data)
+        })
+    }
+    handleEdit
 
     render() {
         const currentDoctor = this.props.doctors.find((doctor)=> doctor._id === this.props.match.params.doctorId)
@@ -17,6 +26,7 @@ class Doctor extends Component {
                 </li>
             )
         })
+
         return (
             <div>
                 <h1>Welcome {currentDoctor.name}</h1>
@@ -24,6 +34,8 @@ class Doctor extends Component {
                 <ul>
                     {patient}
                 </ul>
+
+                <button onClick={this.handleDelete}>Delete User</button>
             </div>
         );
     }
