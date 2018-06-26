@@ -19,6 +19,7 @@ connection.on('error', (err) => {
 
 const doctorsRouter = require('./routes/doctors');
 const patientsRouter = require('./routes/patients');
+const visitRouter = require('./routes/visits');
 const app = express();
 
 app.use(logger('dev'));
@@ -31,4 +32,5 @@ app.get('/', (req, res) => {
 })
 app.use('/api/doctors', doctorsRouter);
 app.use('/api/doctors/:doctorId/patients', patientsRouter);
+app.use('/api/doctors/:doctorId/patients/:patientId/visits', visitRouter);
 module.exports = app;
