@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import axios from 'axios';
 import LogIn from './components/LogIn';
 import Doctor from './components/Doctor';
+import Patient from './components/Patient';
 
 class App extends Component {
   state = {
@@ -24,12 +25,16 @@ class App extends Component {
     const DoctorComponent = (props) => (
       <Doctor doctors={this.state.doctors} {...props} />
     )
+    const PatientComponent = (props) => (
+      <Patient doctors={this.state.doctors}{...props} />
+    )
 
     return (
       <Router>
         <Switch>
           <Route exact path='/' render={LogInComponent} />
           <Route exact path='/:doctorId' render={DoctorComponent} />
+          <Route exact path='/:doctorId/:patientId' render={PatientComponent} />
         </Switch>
       </Router>
     );

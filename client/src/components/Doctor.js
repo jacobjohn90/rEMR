@@ -12,12 +12,11 @@ class Doctor extends Component {
         }
         const patient = currentDoctor.patients.map((patient, i)=> {
             return (
-                <li>
-                    <Link key={i} to={`/${currentDoctor._id}/${patient._id}`}>{patient.name}</Link>
+                <li key={i}>
+                    <Link to={`/${currentDoctor._id}/${patient._id}`}>{patient.name}</Link>
                 </li>
             )
         })
-        console.log(currentDoctor)
         return (
             <div>
                 <h1>Welcome {currentDoctor.name}</h1>
