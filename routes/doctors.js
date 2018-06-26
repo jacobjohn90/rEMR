@@ -19,9 +19,21 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
   const newDoctor = new DoctorModel(req.body)
-  newDoctor.save().then((doctor)=> {
+  newDoctor.save().then((doctor) => {
     res.send(doctor)
   })
 })
 
+router.put('/:id', async (req, res) => {
+  const doctor = await DoctorModel.findByIdAndUpdate(req.params.id, req.body, { new: true })
+  res.json(doctor)
+})
+
+router.delete('/:id', async (req, res) => {
+  const doctor = await DoctorModel.findByIdAndRemove(req.params.id)
+  await doctor.save()
+  await DoctorModel.find().then((doctors) => {
+    res.json({ doctors })
+  })
+})
 module.exports = router;
