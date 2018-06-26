@@ -21,12 +21,15 @@ class App extends Component {
     const LogInComponent = (props) => (
       <LogIn doctors={this.state.doctors} {...props} />
     )
+    const DoctorComponent = (props) => (
+      <Doctor doctors={this.state.doctors} {...props} />
+    )
 
     return (
       <Router>
         <Switch>
           <Route exact path='/' render={LogInComponent} />
-          <Route exact path='/:doctorId' component={Doctor} />
+          <Route exact path='/:doctorId' render={DoctorComponent} />
         </Switch>
       </Router>
     );
