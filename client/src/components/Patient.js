@@ -1,15 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import PatientEdit from './PatientEdit';
 
 class Patient extends Component {
     
     state = {
-        editView: false
+        editView: false,
+        patientInfo: []
     }
 
     componentDidMount() {
-        axios.get
+        const doctorId = this.props.match.params.doctorId
+        const patientId = this.props.match.params.patientId
+        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`).then((res)=> {
+            this.setState({
+                patientInfo: res.data.patient
+            })
+        })
+    }
+    
+    updateStateEdit = (data) => {
+        this.setState({
+            patientInfo: data
+        })
     }
     
     render() {
@@ -17,9 +31,11 @@ class Patient extends Component {
         if (currentDoctor === undefined) {
             return null
         }
+        if (this.state.patientInfo.visits === undefined) {
+            return null
+        }
         const currentPatient = currentDoctor.patients.find((patient) => patient._id === this.props.match.params.patientId)
-        console.log(currentPatient)
-        const visits = currentPatient.visits.map((visit, i) => {
+        const visits = this.state.patientInfo.visits.map((visit, i) => {
             return (
                 <li key={i}>
                     <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>Date: {visit.date}</Link>
@@ -29,16 +45,17 @@ class Patient extends Component {
         })
         return (
             <div>
-                <h1>{currentPatient.name}'s Chart</h1>
+                <h1>{this.state.patientInfo.name}'s Chart</h1>
                 <ul>
-                    <li>Date of Birth: {currentPatient.dateOfBirth}</li>
-                    <li>Weight: {currentPatient.weight}lbs</li>
-                    <li>Height: {currentPatient.height}cm</li>
-                    <li>Occupation: {currentPatient.occupation}</li>
-                    <li>Marital Status: {currentPatient.maritalStatus}</li>
-                    <li>Medical History: {currentPatient.medicalHistory}</li>
+                    <li>Date of Birth: {this.state.patientInfo.dateOfBirth}</li>
+                    <li>Weight: {this.state.patientInfo.weight} lbs</li>
+                    <li>Height: {this.state.patientInfo.height}in</li>
+                    <li>Occupation: {this.state.patientInfo.occupation}</li>
+                    <li>Marital Status: {this.state.patientInfo.maritalStatus}</li>
+                    <li>Medical History: {this.state.patientInfo.medicalHistory}</li>
                 </ul>
-
+                <button>Edit Patient Info</button>
+                <PatientEdit updateStateEdit={this.updateStateEdit} props={this.props}/>
                 <h3>All Visits Recorded</h3>
                     <ul>
                         {visits}

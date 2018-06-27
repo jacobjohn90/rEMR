@@ -55,11 +55,3 @@ class NewPatient extends Component {
 }
 
 export default NewPatient;
-
-
-{/* <li>Date of Birth: {currentPatient.dateOfBirth}</li>
-                    <li>Weight: {currentPatient.weight}lbs</li>
-                    <li>Height: {currentPatient.height}cm</li>
-                    <li>Occupation: {currentPatient.occupation}</li>
-                    <li>Marital Status: {currentPatient.maritalStatus}</li>
-                    <li>Medical History: {currentPatient.medicalHistory}</li> */}
