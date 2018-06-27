@@ -4,7 +4,7 @@ import axios from 'axios';
 import PatientEdit from './PatientEdit';
 
 class Patient extends Component {
-    
+
     state = {
         editView: false,
         patientInfo: []
@@ -13,19 +13,27 @@ class Patient extends Component {
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
-        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`).then((res)=> {
+        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`).then((res) => {
             this.setState({
                 patientInfo: res.data.patient
             })
         })
     }
-    
+
     updateStateEdit = (data) => {
         this.setState({
             patientInfo: data
         })
     }
-    
+
+    handlePatientView = () => {
+        let editView = this.state.editView
+        editView = !this.state.editView
+        this.setState({
+            editView
+        })
+    }
+
     render() {
         const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
         if (currentDoctor === undefined) {
@@ -54,12 +62,19 @@ class Patient extends Component {
                     <li>Marital Status: {this.state.patientInfo.maritalStatus}</li>
                     <li>Medical History: {this.state.patientInfo.medicalHistory}</li>
                 </ul>
-                <button>Edit Patient Info</button>
-                <PatientEdit updateStateEdit={this.updateStateEdit} props={this.props}/>
+                <div>
+                    <button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</button>
+                    {this.state.editView
+                        ?
+                        <PatientEdit updateStateEdit={this.updateStateEdit} props={this.props} />
+                        :
+                        null
+                    }
+                </div>
                 <h3>All Visits Recorded</h3>
-                    <ul>
-                        {visits}
-                    </ul>
+                <ul>
+                    {visits}
+                </ul>
             </div>
         );
     }
