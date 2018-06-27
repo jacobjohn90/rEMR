@@ -25,7 +25,7 @@ class Patient extends Component {
                     <li>Weight: {currentPatient.weight}lbs</li>
                     <li>Height: {currentPatient.height}cm</li>
                     <li>Occupation: {currentPatient.occupation}</li>
-                    <li>Maritl Status: {currentPatient.maritalStatus}</li>
+                    <li>Marital Status: {currentPatient.maritalStatus}</li>
                     <li>Medical History: {currentPatient.medicalHistory}</li>
                 </ul>
 
