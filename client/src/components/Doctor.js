@@ -92,7 +92,9 @@ class Doctor extends Component {
         if (currentDoctor === undefined) {
             return null
         }
-        
+        if (this.state.patients === undefined) {
+            return null
+        }
         const patient = this.state.patients.map((patient, i) => {
             return (
                 <li key={i}>
