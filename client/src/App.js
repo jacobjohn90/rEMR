@@ -31,11 +31,13 @@ class App extends Component {
 
     return (
       <Router>
-        <Switch>
-          <Route exact path='/' render={LogInComponent} />
-          <Route exact path='/:doctorId' render={DoctorComponent} />
-          <Route exact path='/:doctorId/:patientId' render={PatientComponent} />
-        </Switch>
+        <div>
+          <Switch>
+            <Route exact path='/' render={LogInComponent} />
+            <Route exact path='/:doctorId' render={DoctorComponent} />
+            <Route exact path='/:doctorId/:patientId' render={PatientComponent} />
+          </Switch>
+        </div>
       </Router>
     );
   }

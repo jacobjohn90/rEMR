@@ -4,6 +4,10 @@ import axios from 'axios';
 
 class Doctor extends Component {
     
+    state = {
+        editView: false
+    }
+
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         axios.delete(`/api/doctors/${doctorId}`).then((res)=>{
@@ -11,7 +15,14 @@ class Doctor extends Component {
             console.log(res.data)
         })
     }
-    handleEdit
+    handleEdit= () => {
+        let editView = this.state.editView
+        editView = !this.state.editView
+        this.setState({
+            editView
+        })
+
+    }
 
     render() {
         const currentDoctor = this.props.doctors.find((doctor)=> doctor._id === this.props.match.params.doctorId)
@@ -31,10 +42,12 @@ class Doctor extends Component {
             <div>
                 <h1>Welcome {currentDoctor.name}</h1>
                 <h3>Your current Patient List is:</h3>
+                <form action="">
+                </form>
                 <ul>
                     {patient}
                 </ul>
-
+                <button onClick={this.handleEdit}>Edit User Info</button>
                 <button onClick={this.handleDelete}>Delete User</button>
             </div>
         );
