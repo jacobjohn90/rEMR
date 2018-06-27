@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import NewPatient from './NewPatient';
 
 class Doctor extends Component {
 
@@ -8,6 +9,7 @@ class Doctor extends Component {
         name: '',
         password: '',
         editView: false,
+        newPatientView: true,
         editDoc: {
             name: '',
             password: '',
@@ -31,13 +33,19 @@ class Doctor extends Component {
         })
 
     }
+    handleNewPatientView = () => {
+        let newPatientView = this.state.newPatientView
+        newPatientView = !this.state.newPatientView
+        this.setState({
+            newPatientView
+        })
+    }
 
     handleChange = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
         const editDoc = { ...this.state.editDoc }
         editDoc[inputName] = userInput
-
         this.setState({
             editDoc
         })
@@ -61,13 +69,19 @@ class Doctor extends Component {
             alert('Username Already Taken. Try your currently used name or another name')
         }
     }
+    updateStateNewPatient = (data) => {
+        this.setState({
+            patients: data
+        })
+    }
 
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
         axios.get(`/api/doctors/${doctorId}`).then((res) => {
             this.setState({
                 name: res.data.doctor.name,
-                password: res.data.doctor.password
+                password: res.data.doctor.password,
+                patients: res.data.doctor.patients
             })
         })
     }
@@ -78,7 +92,8 @@ class Doctor extends Component {
         if (currentDoctor === undefined) {
             return null
         }
-        const patient = currentDoctor.patients.map((patient, i) => {
+        
+        const patient = this.state.patients.map((patient, i) => {
             return (
                 <li key={i}>
                     <Link to={`/${currentDoctor._id}/${patient._id}`}>{patient.name}</Link>
@@ -89,12 +104,6 @@ class Doctor extends Component {
         return (
             <div>
                 <h1>Welcome {this.state.name}</h1>
-                <h3>Your current Patient List is:</h3>
-                <form action="">
-                </form>
-                <ul>
-                    {patient}
-                </ul>
                 <button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </button>
                 {this.state.editView
                     ?
@@ -110,6 +119,20 @@ class Doctor extends Component {
                     :
                     null}
                 <div>
+                    <div>
+
+                        <h3>Your current Patient List is:</h3>
+                        <ul>
+                            {patient}
+                        </ul>
+                        <button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </button>
+                        {this.state.newPatientView
+                            ?
+                            <NewPatient updateStateNewPatient= {this.updateStateNewPatient} props={this.props}/>
+                            :
+                            null}
+                    </div>
+
                     <button onClick={this.handleDelete}>Delete User</button>
                 </div>
             </div>
