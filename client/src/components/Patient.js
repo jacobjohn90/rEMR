@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import PatientEdit from './PatientEdit';
+import VisitNew from './VisitNew';
 
 class Patient extends Component {
 
@@ -39,6 +40,11 @@ class Patient extends Component {
         axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res)=> {
             this.props.history.push(`/${doctorId}`)
             console.log(res.data.doctor)
+        })
+    }
+    handleUpdateStateNew = (data) => {
+        this.setState ({
+            patientInfo: data
         })
     }
 
@@ -84,6 +90,8 @@ class Patient extends Component {
                 <ul>
                     {visits}
                 </ul>
+                <button>Create New Visit</button>
+                <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} props={this.props}/>
             </div>
         );
     }

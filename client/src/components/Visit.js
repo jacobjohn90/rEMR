@@ -16,6 +16,7 @@ class Visit extends Component {
             })
             console.log(res.data)
         })
+        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`)
     }
     
     render() {

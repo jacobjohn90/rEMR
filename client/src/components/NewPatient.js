@@ -24,6 +24,7 @@ class NewPatient extends Component {
 
     render() {
         return (
+            
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <label>Name: </label>

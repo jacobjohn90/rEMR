@@ -5,7 +5,7 @@ import axios from 'axios';
 import LogIn from './components/LogIn';
 import Doctor from './components/Doctor';
 import Patient from './components/Patient';
-import Visit from './Visit';
+import Visit from './components/Visit';
 
 class App extends Component {
   state = {
