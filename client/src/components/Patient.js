@@ -33,6 +33,14 @@ class Patient extends Component {
             editView
         })
     }
+    handleDelete = () => {
+        const doctorId = this.props.match.params.doctorId
+        const patientId = this.props.match.params.patientId
+        axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res)=> {
+            this.props.history.push(`/${doctorId}`)
+            console.log(res.data.doctor)
+        })
+    }
 
     render() {
         const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
@@ -71,6 +79,7 @@ class Patient extends Component {
                         null
                     }
                 </div>
+                <button onClick={this.handleDelete}>Delete Patient</button>
                 <h3>All Visits Recorded</h3>
                 <ul>
                     {visits}
