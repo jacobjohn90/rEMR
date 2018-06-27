@@ -74,7 +74,7 @@ class Patient extends Component {
                     <button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</button>
                     {this.state.editView
                         ?
-                        <PatientEdit updateStateEdit={this.updateStateEdit} props={this.props} />
+                        <PatientEdit updateStateEdit={this.updateStateEdit} handlePatientView={this.handlePatientView} props={this.props} />
                         :
                         null
                     }

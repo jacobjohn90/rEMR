@@ -48,6 +48,7 @@ class PatientEdit extends Component {
         axios.put(`/api/doctors/${doctorId}/patients/${patientId}`, this.state).then((res)=> {
             const currentPatient = res.data.doctor.patients.find((patient)=> patient._id === patientId)
             this.props.updateStateEdit(currentPatient)
+            this.props.handlePatientView()
         })
     }
 
