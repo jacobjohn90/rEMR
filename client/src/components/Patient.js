@@ -8,7 +8,8 @@ class Patient extends Component {
 
     state = {
         editView: false,
-        patientInfo: []
+        patientInfo: [],
+        newView: false
     }
 
     componentDidMount() {
@@ -37,14 +38,21 @@ class Patient extends Component {
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
-        axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res)=> {
+        axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res) => {
             this.props.history.push(`/${doctorId}`)
             console.log(res.data.doctor)
         })
     }
     handleUpdateStateNew = (data) => {
-        this.setState ({
+        this.setState({
             patientInfo: data
+        })
+    }
+    updateStateNew = () => {
+        let newView = this.state.newView
+        newView = !this.state.newView
+        this.setState({
+            newView
         })
     }
 
@@ -90,8 +98,15 @@ class Patient extends Component {
                 <ul>
                     {visits}
                 </ul>
-                <button>Create New Visit</button>
-                <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} props={this.props}/>
+                <div>
+                    <button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </button>
+                    {this.state.newView
+                        ?
+                        <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} props={this.props} />
+                        :
+                        null
+                    }
+                </div>
             </div>
         );
     }
