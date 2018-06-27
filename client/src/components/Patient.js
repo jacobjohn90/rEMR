@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 class Patient extends Component {
+    
+    state = {
+        editView: false
+    }
+
+    componentDidMount() {
+        axios.get
+    }
+    
     render() {
         const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
         if (currentDoctor === undefined) {

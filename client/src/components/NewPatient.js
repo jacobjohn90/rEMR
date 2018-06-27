@@ -17,9 +17,8 @@ class NewPatient extends Component {
         const doctorId = this.props.props.match.params.doctorId
         axios.post(`/api/doctors/${doctorId}/patients`, this.state).then((res)=> {
             this.props.updateStateNewPatient(res.data.doctor.patients)
+            this.props.handleNewPatientView()
         })
-        
-
     }
 
 

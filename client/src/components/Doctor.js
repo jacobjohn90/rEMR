@@ -9,7 +9,7 @@ class Doctor extends Component {
         name: '',
         password: '',
         editView: false,
-        newPatientView: true,
+        newPatientView: false,
         editDoc: {
             name: '',
             password: '',
@@ -130,7 +130,7 @@ class Doctor extends Component {
                         <button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </button>
                         {this.state.newPatientView
                             ?
-                            <NewPatient updateStateNewPatient= {this.updateStateNewPatient} props={this.props}/>
+                            <NewPatient updateStateNewPatient={this.updateStateNewPatient} handleNewPatientView={this.handleNewPatientView} props={this.props}/>
                             :
                             null}
                     </div>
