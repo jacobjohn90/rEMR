@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import LogInWrapper from './Styled/LogInStyle';
 
 class LogIn extends Component {
     state = {
@@ -68,7 +69,7 @@ class LogIn extends Component {
     render() {
 
         return (
-            <div>
+            <LogInWrapper>
                 <h2>LogIn</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -91,7 +92,7 @@ class LogIn extends Component {
                         </div>
                         : null}
                 </div>
-            </div>
+            </LogInWrapper>
         );
     }
 }

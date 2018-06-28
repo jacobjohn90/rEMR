@@ -105,7 +105,7 @@ class Doctor extends Component {
 
         return (
             <div>
-                <h1>Welcome {this.state.name}</h1>
+                <h2>Welcome {this.state.name}</h2>
                 <button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </button>
                 {this.state.editView
                     ?
