@@ -20,6 +20,7 @@ class Doctor extends Component {
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         axios.delete(`/api/doctors/${doctorId}`).then((res) => {
+            
             this.props.history.push('/')
 
         })
@@ -87,18 +88,15 @@ class Doctor extends Component {
     }
 
     render() {
-        const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
 
-        if (currentDoctor === undefined) {
-            return null
-        }
         if (this.state.patients === undefined) {
             return null
         }
+        const doctorId = this.props.match.params.doctorId
         const patient = this.state.patients.map((patient, i) => {
             return (
                 <li key={i}>
-                    <Link to={`/${currentDoctor._id}/${patient._id}`}>{patient.name}</Link>
+                    <Link to={`/${doctorId}/${patient._id}`}>{patient.name}</Link>
                 </li>
             )
         })
