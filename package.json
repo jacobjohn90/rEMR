@@ -19,6 +19,7 @@
     "express": "~4.16.0",
     "mongoose": "^5.1.6",
     "morgan": "~1.9.0",
-    "npm": "^6.1.0"
+    "npm": "^6.1.0",
+    "styled-components": "^3.3.3"
   }
 }

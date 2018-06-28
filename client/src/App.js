@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
-import styled from 'styled-components';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import axios from 'axios';
 import LogIn from './components/LogIn';
 import Doctor from './components/Doctor';
 import Patient from './components/Patient';
 import Visit from './components/Visit';
+import Nav from './components/Nav';
 
 class App extends Component {
   state = {
@@ -36,6 +36,7 @@ class App extends Component {
     return (
       <Router>
         <div>
+          <Nav />
           <Switch>
             <Route exact path='/' render={LogInComponent} />
             <Route exact path='/:doctorId' render={DoctorComponent} />

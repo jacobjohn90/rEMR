@@ -42,7 +42,7 @@ class Patient extends Component {
         const patientId = this.props.match.params.patientId
         axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res) => {
             this.props.history.push(`/${doctorId}`)
-            console.log(res.data.doctor)
+
         })
     }
     handleUpdateStateNew = (data) => {

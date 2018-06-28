@@ -66,10 +66,10 @@ class LogIn extends Component {
 
 
     render() {
-        console.log(this.props)
+
         return (
             <div>
-                <h1>LogIn</h1>
+                <h2>LogIn</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                     <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
