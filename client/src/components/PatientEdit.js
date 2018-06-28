@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import moment from 'moment';
 
 class PatientEdit extends Component {
 
@@ -61,7 +62,7 @@ class PatientEdit extends Component {
                     <input placeholder={this.state.name} type="text" name="name" value={this.state.name} onChange={this.handleChange} />
 
                     <label>Date of Birth: </label>
-                    <input placeholder={this.state.dateOfBirth} type="date" name="dateOfBirth" value={this.state.dateOfBirth} onChange={this.handleChange} />
+                    <input placeholder={this.state.dateOfBirth} type="date" name="dateOfBirth" value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} onChange={this.handleChange} />
 
                     <label>Weight: </label>
                     <input placeholder={this.state.weight} type="number" name="weight" value={this.state.weight} onChange={this.handleChange} />

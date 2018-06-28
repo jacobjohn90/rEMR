@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import moment from 'moment';
+
 import PatientEdit from './PatientEdit';
 import VisitNew from './VisitNew';
 
@@ -68,7 +70,7 @@ class Patient extends Component {
         const visits = this.state.patientInfo.visits.map((visit, i) => {
             return (
                 <li key={i}>
-                    <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>Date: {visit.date}</Link>
+                    <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>Date: {moment(visit.date).format("MMM Do YYYY")}</Link>
                     <span> Chief Complaint: {visit.chiefComplaint}</span>
                 </li>
             )
@@ -77,7 +79,7 @@ class Patient extends Component {
             <div>
                 <h1>{this.state.patientInfo.name}'s Chart</h1>
                 <ul>
-                    <li>Date of Birth: {this.state.patientInfo.dateOfBirth}</li>
+                    <li>Date of Birth: {moment(this.state.patientInfo.dateOfBirth).format("MMM Do YYYY")}</li>
                     <li>Weight: {this.state.patientInfo.weight} lbs</li>
                     <li>Height: {this.state.patientInfo.height}in</li>
                     <li>Occupation: {this.state.patientInfo.occupation}</li>
