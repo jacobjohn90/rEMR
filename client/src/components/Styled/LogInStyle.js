@@ -7,10 +7,13 @@ const LogInWrapper = styled.div`
     min-height: 30%;
     max-width: 90vw;
     margin: 0 auto;
-    margin-top: 10px;
+    margin-top: 1rem;
     border-radius: 5px;
     form{
+        display: flex;
+        flex-direction: column;
         input{
+            flex: 1;
             margin: 0 1em 1em 1em;
             border: 1px solid black;
             background-color: lightgoldenrodyellow;
@@ -18,8 +21,10 @@ const LogInWrapper = styled.div`
             padding: 0.25rem 1rem;
         }
     }
-   
-    
+@media (min-width: 500px) {
+        form{
+            display: block;
+    }
 `
 
 
