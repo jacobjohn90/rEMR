@@ -37,17 +37,17 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
+
+        <SwitchWrapper >
           <Nav />
-          <SwitchWrapper>
-            <Switch>
-              <Route exact path='/' render={LogInComponent} />
-              <Route exact path='/:doctorId' render={DoctorComponent} />
-              <Route exact path='/:doctorId/:patientId' render={PatientComponent} />
-              <Route exact path='/:doctorId/:patientId/:visitId' render={VisitComponent} />
-            </Switch>
-          </SwitchWrapper>
-        </div>
+          <Switch>
+            <Route exact path='/' render={LogInComponent} />
+            <Route exact path='/:doctorId' render={DoctorComponent} />
+            <Route exact path='/:doctorId/:patientId' render={PatientComponent} />
+            <Route exact path='/:doctorId/:patientId/:visitId' render={VisitComponent} />
+          </Switch>
+        </SwitchWrapper>
+
       </Router>
     );
   }

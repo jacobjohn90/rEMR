@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Button = styled.button`
-    background-color: ${props => props.theme.bg};
+    background-color: white;
     color: ${props=> props.theme.fc};
     border: 2px solid ${props => props.theme.fc};
     border-radius: 5px;
@@ -22,16 +22,13 @@ const Button = styled.button`
 
 `;
 const add = {
-    bg: 'white',
     fc: 'green'
 
 }
 const logIn = {
-    bg: 'white',
     fc: 'maroon'
 }
 const create = {
-    bg: 'white',
     fc: 'teal'
 
 }
