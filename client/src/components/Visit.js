@@ -2,38 +2,34 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class Visit extends Component {
-    
+
     state = {
         visitInfo: [],
+        patientInfo: []
     }
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
         const visitId = this.props.match.params.visitId
-        axios.get(`/api/doctors/${doctorId}/patients/${patientId}/visits/${visitId}`).then((res)=> {
+        axios.get(`/api/doctors/${doctorId}/patients/${patientId}/visits/${visitId}`).then((res) => {
             this.setState({
                 visitInfo: res.data.visit
             })
-            console.log(res.data)
         })
-        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`)
+        axios.get(`/api/doctors/${doctorId}/patients/${patientId}`).then((res) => {
+            this.setState({
+                patientInfo: res.data.patient
+            })
+        })
     }
-    
+
     render() {
-        const doctorId = this.props.match.params.doctorId
-        const patientId = this.props.match.params.patientId
-        const currentDoctor = this.props.doctors.find((doctor)=> doctor._id === doctorId)
-        if (currentDoctor === undefined) {
-            return null
-        }
-        const currentPatient = currentDoctor.patients.find((patient)=> patient._id === patientId)
-        
         if (this.state.visitInfo._id === undefined) {
             return null
         }
         return (
             <div>
-                <h1>{currentPatient.name}'s visit on {this.state.visitInfo.date}</h1>
+                <h1>{this.state.patientInfo.name}'s visit on {this.state.visitInfo.date}</h1>
                 <h3>About This Visit</h3>
                 <ul>
                     <li>Date: {this.state.visitInfo.date}</li>
