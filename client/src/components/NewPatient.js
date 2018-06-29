@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, green } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
+import NewPatientStyle from './Styled/NewPatientStyle';
+
 
 class NewPatient extends Component {
 
@@ -28,31 +30,40 @@ class NewPatient extends Component {
         return (
 
             <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Name: </label>
-                    <input placeholder="Name" type="text" name="name" onChange={this.handleChange} />
+                <NewPatientStyle onSubmit={this.handleSubmit}>
+                    <div>
+                        <label htmlFor="name">Name:</label>
+                        <input placeholder="Name" type="text" name="name" onChange={this.handleChange} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="dateOfBirth">Date of Birth:</label>
+                        <input type="date" name="dateOfBirth" onChange={this.handleChange} required/>
+                    </div>
+                    <div>
+                        <label htmlFor="weight">Weight(lbs):</label>
+                        <input placeholder="Weight" type="number" name="weight" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="height">Height(in):</label>
+                        <input placeholder="Height" type="number" name="height" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="Occupation">Occupation:</label>
+                        <input placeholder="Occupation" type="text" name="occupation" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="maritalStatus">Marital Status:</label>
+                        <input placeholder="Marital Status" type="text" name="maritalStatus" onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="medicalHistory">Medical History:</label>
+                        <input placeholder="Medical History" type="text" name="medicalHistory" onChange={this.handleChange} required/>
+                    </div>
 
-                    <label>Date of Birth: </label>
-                    <input type="date" name="dateOfBirth" onChange={this.handleChange} />
-
-                    <label>Weight: </label>
-                    <input placeholder="Weight" type="number" name="weight" onChange={this.handleChange} />
-
-                    <label>Height: </label>
-                    <input placeholder="Height" type="number" name="height" onChange={this.handleChange} />
-
-                    <label>Occupation: </label>
-                    <input placeholder="Occupation" type="text" name="occupation" onChange={this.handleChange} />
-
-                    <label>Marital Status: </label>
-                    <input placeholder="Marital Status" type="text" name="maritalStatus" onChange={this.handleChange} />
-
-                    <label>Medical History: </label>
-                    <input placeholder="Medical History" type="text" name="medicalHistory" onChange={this.handleChange} />
                     <ThemeProvider theme={green}>
                         <Button type='submit'>Save New Patient</Button>
                     </ThemeProvider>
-                </form>
+                </NewPatientStyle>
             </div>
         );
     }

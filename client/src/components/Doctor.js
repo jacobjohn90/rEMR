@@ -115,11 +115,8 @@ class Doctor extends Component {
                         {this.state.editView
                             ?
                             <form onSubmit={this.handleSubmit}>
-                                <label>Name: </label>
                                 <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
-                                <label>Password: </label>
                                 <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
-                                <label>Repeat Password: </label>
                                 <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
                                 <Button type='submit'>Save Edits</Button>
                             </form>
