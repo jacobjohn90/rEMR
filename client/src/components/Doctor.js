@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { Button, green, maroon, teal } from './Styled/Buttons';
+import { ThemeProvider } from 'styled-components';
+
 import NewPatient from './NewPatient';
+import DoctorStyle from './Styled/DoctorStyle';
 
 class Doctor extends Component {
 
@@ -20,7 +24,7 @@ class Doctor extends Component {
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         axios.delete(`/api/doctors/${doctorId}`).then((res) => {
-            
+
             this.props.history.push('/')
 
         })
@@ -102,22 +106,27 @@ class Doctor extends Component {
         })
 
         return (
-            <div>
+            <DoctorStyle>
                 <h2>Welcome {this.state.name}</h2>
-                <button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </button>
-                {this.state.editView
-                    ?
-                    <form onSubmit={this.handleSubmit}>
-                        <label>Name: </label>
-                        <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
-                        <label>Password: </label>
-                        <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
-                        <label>Repeat Password: </label>
-                        <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
-                        <button type='submit'>Save Edits</button>
-                    </form>
-                    :
-                    null}
+                <ThemeProvider theme={teal}>
+                    <div>
+                        <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </Button>
+
+                        {this.state.editView
+                            ?
+                            <form onSubmit={this.handleSubmit}>
+                                <label>Name: </label>
+                                <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
+                                <label>Password: </label>
+                                <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
+                                <label>Repeat Password: </label>
+                                <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
+                                <Button type='submit'>Save Edits</Button>
+                            </form>
+                            :
+                            null}
+                    </div>
+                </ThemeProvider>
                 <div>
                     <div>
 
@@ -125,17 +134,20 @@ class Doctor extends Component {
                         <ul>
                             {patient}
                         </ul>
-                        <button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </button>
+                        <ThemeProvider theme={green}>
+                            <Button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </Button>
+                        </ThemeProvider>
                         {this.state.newPatientView
                             ?
-                            <NewPatient updateStateNewPatient={this.updateStateNewPatient} handleNewPatientView={this.handleNewPatientView} props={this.props}/>
+                            <NewPatient updateStateNewPatient={this.updateStateNewPatient} handleNewPatientView={this.handleNewPatientView} props={this.props} />
                             :
                             null}
                     </div>
-
-                    <button onClick={this.handleDelete}>Delete User</button>
+                    <ThemeProvider theme={maroon}>
+                        <Button onClick={this.handleDelete}>Delete User</Button>
+                    </ThemeProvider>
                 </div>
-            </div>
+            </DoctorStyle>
         );
     }
 }

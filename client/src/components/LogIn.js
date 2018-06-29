@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import LogInWrapper from './Styled/LogInStyle';
-import { Button, add, logIn, create } from './Styled/Buttons';
+import { Button, green, maroon, teal } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 
 class LogIn extends Component {
@@ -76,12 +76,12 @@ class LogIn extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                     <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <ThemeProvider theme={logIn}>
+                    <ThemeProvider theme={maroon}>
                         <Button type='submit'>Log In</Button>
                     </ThemeProvider>
                 </form>
                 <br />
-                <ThemeProvider theme={add}>
+                <ThemeProvider theme={green}>
                     <Button onClick={this.changeView}>{this.state.createShow ? "Hide Form" : "Add New User"}</Button>
                 </ThemeProvider>
                 <div>
@@ -93,7 +93,7 @@ class LogIn extends Component {
                                 <input placeholder="Name" type="text" name="name" value={this.state.newUser.name} onChange={this.handleChangeNew} required/>
                                 <input placeholder="Password" type="password" name="password" value={this.state.newUser.password} onChange={this.handleChangeNew} required/>
                                 <input placeholder="Repeat Password" type="password" name="passwordRepeat" value={this.state.passwordRepeat} onChange={this.handleChangeNew} required/>
-                                <ThemeProvider theme={create}>
+                                <ThemeProvider theme={teal}>
                                     <Button type='submit'>Create and Login</Button>
                                 </ThemeProvider>
                             </form>

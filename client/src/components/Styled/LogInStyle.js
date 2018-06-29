@@ -18,7 +18,7 @@ const LogInWrapper = styled.div`
             border: 1px solid black;
             background-color: lightgoldenrodyellow;
             border-radius: 3px;
-            padding: 0.25rem 1rem;
+            padding: 0.5rem 1rem;
         }
     }
 @media (min-width: 500px) {

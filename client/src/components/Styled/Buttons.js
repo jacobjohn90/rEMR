@@ -6,6 +6,7 @@ const Button = styled.button`
     border: 2px solid ${props => props.theme.fc};
     border-radius: 5px;
     padding: 0.5rem;
+    margin-bottom: 0.5rem;
     :hover{
         background-color: white;
         color: black;
@@ -18,23 +19,22 @@ const Button = styled.button`
         background-color: black;
         color: white;
     }
-
 `;
-const add = {
+const green = {
     fc: 'green'
 
 }
-const logIn = {
+const maroon = {
     fc: 'maroon'
 }
-const create = {
+const teal = {
     fc: 'teal'
 
 }
 
 export {
     Button,
-    add,
-    logIn,
-    create,
+    green,
+    maroon,
+    teal,
 }

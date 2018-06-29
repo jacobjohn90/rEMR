@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import img from '../Images/coffee.jpg';
-import bigImg from '../Images/largeBackground.jpg'
+import img from '../../Images/coffee.jpg';
+import bigImg from '../../Images/largeBackground.jpg'
 
 const StyleWrapper = styled.div`
     min-height: 100vh;
