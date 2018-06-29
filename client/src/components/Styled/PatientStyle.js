@@ -12,7 +12,7 @@ margin-top: 1rem;
 margin-bottom: 1rem;
 border-radius: 5px;
 overflow: auto;
-max-height: 55vh;
+max-height: 75vh;
 button{
     margin-left: 0;
 }
@@ -48,7 +48,7 @@ const PatientInfoStyle = styled.ul`
     padding-left: 10px;
     text-align: left;
 
-@media only screen and (min-width: 500px){
+@media only screen and (min-width: 520px){
     width: 30vw;
     font-size: 0.8em;
 }
