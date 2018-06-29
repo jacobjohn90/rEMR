@@ -49,7 +49,7 @@ const PatientInfoStyle = styled.ul`
     text-align: left;
 
 @media only screen and (min-width: 520px){
-    width: 30vw;
+    width: 50vw;
     font-size: 0.8em;
 }
 @media only screen and (min-width: 650px){
