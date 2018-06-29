@@ -89,10 +89,35 @@ a{
     color: seagreen;
 }
 `
+const NewListStyle = styled.div`
+form{
+    max-width: 300px;
+    margin: 0 auto 10px;
+    background: rgba(255,255,255, 0.7);
+    font-size: 0.7em;
+    padding: 10px;
+    border-radius: 5px;
+}
+div{
+    display: flex;
+    align-items: center;
+}
+@media only screen and (min-width: 520px){
+    form{
+        font-size: 0.8em;
+    }
+}
+@media only screen and (min-width: 650px){
+    form{
+        font-size: 1em;
+    }
+}
+`
 
 export {
     PatientStyle,
     PatientInfoStyle,
     VisitListStyle,
-    PatientEditStyle
+    PatientEditStyle,
+    NewListStyle
 }
