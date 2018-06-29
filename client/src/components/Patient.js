@@ -7,7 +7,7 @@ import { ThemeProvider } from 'styled-components';
 
 import PatientEdit from './PatientEdit';
 import VisitNew from './VisitNew';
-import {PatientStyle, PatientInfoStyle, VisitListStyle} from './Styled/PatientStyle';
+import { PatientStyle, PatientInfoStyle, VisitListStyle } from './Styled/PatientStyle';
 
 class Patient extends Component {
 
@@ -100,13 +100,17 @@ class Patient extends Component {
                         null
                     }
                 </div>
-                <button onClick={this.handleDelete}>Delete Patient</button>
+                <ThemeProvider theme={maroon}>
+                    <Button onClick={this.handleDelete}>Delete Patient</Button>
+                </ThemeProvider>
                 <h3>All Visits Recorded</h3>
                 <VisitListStyle>
                     {visits}
                 </VisitListStyle>
                 <div>
-                    <button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </button>
+                    <ThemeProvider theme={green}>
+                        <Button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </Button>
+                    </ThemeProvider>
                     {this.state.newView
                         ?
                         <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} props={this.props} />

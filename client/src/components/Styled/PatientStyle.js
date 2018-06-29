@@ -13,7 +13,9 @@ const PatientInfoStyle = styled.ul`
         text-decoration: none;
         color: seagreen;
     }
-
+@media only screen and (min-height: 500px){
+    width: 30vw
+}
 `
 const VisitListStyle = styled.ul`
 list-style: none;
@@ -33,6 +35,11 @@ max-width: 60vw;
 margin: 0 auto;
 margin-top: 1rem;
 border-radius: 5px;
+overflow: auto;
+max-height: 75vh;
+button{
+    margin-left: 0;
+}
 
 form{
     display: flex;
