@@ -14,7 +14,8 @@ class Patient extends Component {
     state = {
         editView: false,
         patientInfo: [],
-        newView: false
+        newView: false,
+        deleteView: false
     }
 
     componentDidMount() {
@@ -40,11 +41,18 @@ class Patient extends Component {
             editView
         })
     }
+    updateStateDelete = () => {
+        let deleteView = !this.state.deleteView
+        this.setState({
+            deleteView
+        })
+    }
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
         axios.delete(`/api/doctors/${doctorId}/patients/${patientId}`).then((res) => {
             this.props.history.push(`/${doctorId}`)
+            this.updateStateDelete()
 
         })
     }
@@ -101,7 +109,13 @@ class Patient extends Component {
                     }
                 </div>
                 <ThemeProvider theme={maroon}>
-                    <Button onClick={this.handleDelete}>Delete Patient</Button>
+                    {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
+                </ThemeProvider>
+                <ThemeProvider theme={green}>
+                    {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
+                </ThemeProvider>
+                <ThemeProvider theme={maroon}>
+                    {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
                 </ThemeProvider>
                 <h3>All Visits Recorded</h3>
                 <VisitListStyle>
