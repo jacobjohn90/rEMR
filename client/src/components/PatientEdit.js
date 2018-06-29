@@ -79,7 +79,7 @@ class PatientEdit extends Component {
                     <label>Medical History: </label>
                     <input placeholder={this.state.medicalHistory} type="text" name="medicalHistory" value={this.state.medicalHistory} onChange={this.handleChange} />
 
-                    <button type='submit'>Save New Patient</button>
+                    <button type='submit'>Save Changes</button>
                 </form>
             </div>
         );

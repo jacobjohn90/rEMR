@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const PatientInfoStyle = styled.ul`
-    width: 300px;
+    width: 50vw;
     background-color: rgba(255,255,255,0.7);
     border-radius: 5px;
     list-style: none;
@@ -13,6 +13,7 @@ const PatientInfoStyle = styled.ul`
         text-decoration: none;
         color: seagreen;
     }
+
 `
 const VisitListStyle = styled.ul`
 list-style: none;
@@ -28,7 +29,7 @@ text-align: center;
 background-color: rgba(255,255,255, 0.7);
 padding: 1rem;
 min-height: 30%;
-max-width: 90vw;
+max-width: 60vw;
 margin: 0 auto;
 margin-top: 1rem;
 border-radius: 5px;
