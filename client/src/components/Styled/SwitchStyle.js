@@ -3,7 +3,7 @@ import img from '../../Images/coffee.jpg';
 import bigImg from '../../Images/largeBackground.jpg'
 
 const StyleWrapper = styled.div`
-    min-height: 85vh;
+    height: 100vh;
     background-image: url(${img});
     background-size: cover;
     

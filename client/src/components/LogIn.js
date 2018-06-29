@@ -76,12 +76,12 @@ class LogIn extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                     <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <ThemeProvider theme={maroon}>
+                    <ThemeProvider theme={green}>
                         <Button type='submit'>Log In</Button>
                     </ThemeProvider>
                 </form>
                 <br />
-                <ThemeProvider theme={green}>
+                <ThemeProvider theme={teal}>
                     <Button onClick={this.changeView}>{this.state.createShow ? "Hide Form" : "Add New User"}</Button>
                 </ThemeProvider>
                 <div>

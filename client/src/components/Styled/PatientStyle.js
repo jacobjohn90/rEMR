@@ -5,13 +5,14 @@ text-align: center;
 background-color: rgba(255,255,255, 0.7);
 padding: 1rem;
 min-height: 30%;
+max-height: 70vh;
 max-width: 60vw;
 margin: 0 auto;
 margin-top: 1rem;
 margin-bottom: 1rem;
 border-radius: 5px;
 overflow: auto;
-max-height: 40vh;
+max-height: 55vh;
 button{
     margin-left: 0;
 }
