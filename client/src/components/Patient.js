@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment';
+import { Button, green, maroon, teal } from './Styled/Buttons';
+import { ThemeProvider } from 'styled-components';
 
 import PatientEdit from './PatientEdit';
 import VisitNew from './VisitNew';
+import {PatientStyle, PatientInfoStyle, VisitListStyle} from './Styled/PatientStyle';
 
 class Patient extends Component {
 
@@ -76,18 +79,20 @@ class Patient extends Component {
             )
         })
         return (
-            <div>
+            <PatientStyle>
                 <h1>{this.state.patientInfo.name}'s Chart</h1>
-                <ul>
+                <PatientInfoStyle>
                     <li>Date of Birth: {moment(this.state.patientInfo.dateOfBirth).format("MMM Do YYYY")}</li>
                     <li>Weight: {this.state.patientInfo.weight} lbs</li>
                     <li>Height: {this.state.patientInfo.height}in</li>
                     <li>Occupation: {this.state.patientInfo.occupation}</li>
                     <li>Marital Status: {this.state.patientInfo.maritalStatus}</li>
                     <li>Medical History: {this.state.patientInfo.medicalHistory}</li>
-                </ul>
+                </PatientInfoStyle>
                 <div>
-                    <button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</button>
+                    <ThemeProvider theme={teal}>
+                        <Button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</Button>
+                    </ThemeProvider>
                     {this.state.editView
                         ?
                         <PatientEdit updateStateEdit={this.updateStateEdit} handlePatientView={this.handlePatientView} props={this.props} />
@@ -97,9 +102,9 @@ class Patient extends Component {
                 </div>
                 <button onClick={this.handleDelete}>Delete Patient</button>
                 <h3>All Visits Recorded</h3>
-                <ul>
+                <VisitListStyle>
                     {visits}
-                </ul>
+                </VisitListStyle>
                 <div>
                     <button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </button>
                     {this.state.newView
@@ -109,7 +114,7 @@ class Patient extends Component {
                         null
                     }
                 </div>
-            </div>
+            </PatientStyle>
         );
     }
 }
