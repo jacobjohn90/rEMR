@@ -12,6 +12,7 @@ const LogInWrapper = styled.div`
     form{
         display: flex;
         flex-direction: column;
+        
         input{
             flex: 1;
             margin: 0 1em 1em 1em;

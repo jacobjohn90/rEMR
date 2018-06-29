@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { PatientEditStyle } from './Styled/PatientStyle';
+import { Button, teal } from './Styled/Buttons';
+import { ThemeProvider } from 'styled-components';
 
 class PatientEdit extends Component {
 
@@ -56,7 +59,7 @@ class PatientEdit extends Component {
     render() {
 
         return (
-            <div>
+            <PatientEditStyle>
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <label>Name: </label>
@@ -86,9 +89,11 @@ class PatientEdit extends Component {
                         <label>Medical History: </label>
                         <input placeholder={this.state.medicalHistory} type="text" name="medicalHistory" value={this.state.medicalHistory} onChange={this.handleChange} />
                     </div>
-                    <button type='submit'>Save Changes</button>
+                    <ThemeProvider theme={teal}>
+                        <Button type='submit'>Save Changes</Button>
+                    </ThemeProvider>
                 </form>
-            </div>
+            </PatientEditStyle>
         );
     }
 }

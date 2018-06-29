@@ -5,14 +5,13 @@ text-align: center;
 background-color: rgba(255,255,255, 0.7);
 padding: 1rem;
 min-height: 30%;
-max-height: 70vh;
-max-width: 60vw;
+max-width: 75vw;
 margin: 0 auto;
 margin-top: 1rem;
 margin-bottom: 1rem;
 border-radius: 5px;
 overflow: auto;
-max-height: 75vh;
+max-height: 70vh;
 button{
     margin-left: 0;
 }
@@ -26,8 +25,9 @@ form{
         border: 1px solid black;
         background-color: lightgoldenrodyellow;
         border-radius: 3px;
-        padding: 0.5rem 1rem;
+        padding: 0.5em 1em;
         text-align: left;
+        min-width: 50px;
         }
 }
 @media only screen and (min-width: 500px) {
@@ -56,7 +56,29 @@ const PatientInfoStyle = styled.ul`
     font-size: 1em;
 }
 `
-
+const PatientEditStyle = styled.div`
+form{
+    max-width: 300px;
+    margin: 0 auto;
+    background: rgba(255,255,255, 0.7);
+    font-size: 0.7em;
+    padding: 10px;
+}
+div{
+    display: flex;
+    align-items: center;
+}
+@media only screen and (min-width: 520px){
+    form{
+        font-size: 0.8em;
+    }
+}
+@media only screen and (min-width: 650px){
+    form{
+        font-size: 1em;
+    }
+}
+`
 const VisitListStyle = styled.ul`
 list-style: none;
 margin: 0 0 20px;
@@ -66,9 +88,7 @@ a{
     color: seagreen;
 }
 `
-const PatientEditStyle = styled.div`
 
-`
 export {
     PatientStyle,
     PatientInfoStyle,

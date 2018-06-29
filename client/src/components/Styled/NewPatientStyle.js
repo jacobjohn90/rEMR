@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const NewPatientStyle = styled.form`
-background-color: rgba(255,255,255,0.8);
+background-color: rgba(255,255,255,0.7);
 padding: 10px;
 border-radius: 5px;
 margin: 10px auto;

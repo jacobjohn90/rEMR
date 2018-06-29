@@ -9,6 +9,8 @@ max-width: 90vw;
 margin: 0 auto;
 margin-top: 1rem;
 border-radius: 5px;
+overflow: auto;
+max-height: 75vh;
 
 ul{
     list-style: none;
