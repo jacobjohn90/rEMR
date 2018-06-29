@@ -5,7 +5,7 @@ background-color: rgba(255,255,255,0.8);
 padding: 10px;
 border-radius: 5px;
 margin: 10px auto;
-max-width: 600px;
+max-width: 450px;
 
 div{
     display: flex;
@@ -21,9 +21,9 @@ div{
 }
 @media (min-width: 500px) {
 div{
-    display: inline-block;
+    display: flex;
     input{
-        max-width: 100px;
+        
     }
 }
 button{
