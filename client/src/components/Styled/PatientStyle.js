@@ -15,6 +15,9 @@ max-height: 70vh;
 button{
     margin-left: 0;
 }
+button:nth-child(6){
+    margin-left: 10px;
+}
 
 form{
     display: flex;
