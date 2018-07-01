@@ -39,6 +39,26 @@ form{
     }
 }
 `
+const VisitInfoStyle = styled.ul`
+    width: 50vw;
+    font-size: 0.7em;
+    background-color: rgba(255,255,255,0.7);
+    border-radius: 5px;
+    list-style: none;
+    margin: 0 auto 10px;
+    padding: 10px;
+    padding-left: 10px;
+    text-align: left;
+
+@media only screen and (min-width: 520px){
+    width: 50vw;
+    font-size: 0.8em;
+}
+@media only screen and (min-width: 650px){
+    font-size: 1em;
+}
+`
 export {
-    VisitStyle
+    VisitStyle,
+    VisitInfoStyle
 }

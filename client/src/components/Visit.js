@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import VisitEdit from './VisitEdit';
-import { VisitStyle } from './Styled/VisitStyle';
+import { VisitStyle, VisitInfoStyle } from './Styled/VisitStyle';
+import { Button, teal } from './Styled/Buttons';
+import { ThemeProvider } from 'styled-components';
 
 class Visit extends Component {
 
@@ -10,6 +12,7 @@ class Visit extends Component {
         visitInfo: [],
         patientInfo: [],
         editView: false,
+        deleteView: false,
     }
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
@@ -47,6 +50,12 @@ class Visit extends Component {
             this.props.history.push(`/${doctorId}/${patientId}`)
         })
     }
+    updateStateDelete = () => {
+        let deleteView = !this.state.deleteView
+        this.setState({
+            deleteView
+        })
+    }
 
     render() {
         if (this.state.visitInfo._id === undefined) {
@@ -57,23 +66,27 @@ class Visit extends Component {
                 <h1>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h1>
                 <div>
                     <h3>About This Visit</h3>
-                    <ul>
+                    <VisitInfoStyle>
                         <li>Date: {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</li>
                         <li>Chief Complaint: {this.state.visitInfo.chiefComplaint}</li>
                         <li>Duration: {this.state.visitInfo.duration}</li>
                         <li>Associated Symptoms: {this.state.visitInfo.associatedSymptoms}</li>
                         <li>Diagnosis: {this.state.visitInfo.diagnosis}</li>
                         <li>Treatment: {this.state.visitInfo.treatment}</li>
-                    </ul>
+                    </VisitInfoStyle>
                 </div>
                 <div>
-                    <button onClick={this.handleEditView}>{this.state.editView ? "Close Edit Form" : "Edit Visit Info"}</button>
-                    {this.state.editView
-                        ?
-                        <VisitEdit updateStateEdit={this.updateStateEdit} handleEditView={this.handleEditView} props={this.props} />
-                        :
-                        null
-                    }
+                    <ThemeProvider theme={teal}>
+                        <div>
+                            <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit Form" : "Edit Visit Info"}</Button>
+                            {this.state.editView
+                                ?
+                                <VisitEdit updateStateEdit={this.updateStateEdit} handleEditView={this.handleEditView} props={this.props} />
+                                :
+                                null
+                            }
+                        </div>
+                    </ThemeProvider>
                 </div>
                 <button onClick={this.handleDelete}>Delete This Visit</button>
             </VisitStyle>

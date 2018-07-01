@@ -62,8 +62,7 @@ class Patient extends Component {
         })
     }
     updateStateNew = () => {
-        let newView = this.state.newView
-        newView = !this.state.newView
+        let newView = !this.state.newView
         this.setState({
             newView
         })
@@ -81,7 +80,7 @@ class Patient extends Component {
         const visits = this.state.patientInfo.visits.map((visit, i) => {
             return (
                 <li key={i}>
-                    <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>Date: {moment(visit.date).format("MMM Do YYYY")}</Link>
+                    <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>{moment(visit.date).format("MMM Do YYYY")}</Link>
                     <span> Chief Complaint: {visit.chiefComplaint}</span>
                 </li>
             )
