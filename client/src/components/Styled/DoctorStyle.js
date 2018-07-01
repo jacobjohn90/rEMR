@@ -5,13 +5,13 @@ text-align: center;
 background-color: rgba(255,255,255, 0.7);
 padding: 1rem;
 min-height: 30%;
-max-width: 90vw;
+max-width: 60vw;
 margin: 0 auto;
 margin-top: 1rem;
 border-radius: 5px;
 overflow: auto;
-max-height: 75vh;
-
+max-height: 72.5vh;
+font-size: 0.7rem;
 ul{
     list-style: none;
     margin: 0 0 20px;
@@ -32,6 +32,7 @@ form{
         border-radius: 3px;
         padding: 0.5rem 1rem;
         text-align: left;
+        min-width: 50px;
         }
 }
 @media only screen and (min-width: 500px) {
@@ -39,6 +40,12 @@ form{
         display: block;
     }
 }
+@media only screen and (min-width: 520px){
+        font-size: 0.8rem;
+    }
+@media only screen and (min-width: 650px){
+        font-size: 1rem;
+    }
 `
 
 export default DoctorStyle

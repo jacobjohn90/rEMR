@@ -101,7 +101,7 @@ a{
 `
 const NewListStyle = styled.div`
 form{
-    max-width: 300px;
+    max-width: 350px;
     margin: 0 auto 10px;
     background: rgba(255,255,255, 0.7);
     font-size: 0.7rem;
