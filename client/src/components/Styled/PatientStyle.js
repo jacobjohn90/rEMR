@@ -5,20 +5,20 @@ text-align: center;
 background-color: rgba(255,255,255, 0.7);
 padding: 1rem;
 min-height: 30%;
-max-width: 75vw;
+max-width: 60vw;
 margin: 0 auto;
 margin-top: 1rem;
 margin-bottom: 1rem;
 border-radius: 5px;
 overflow: auto;
-max-height: 70vh;
+max-height: 72.5vh;
+font-size: 0.7rem;
 button{
     margin-left: 0;
 }
 button:nth-child(6){
     margin-left: 10px;
 }
-
 form{
     display: flex;
     flex-direction: column;
@@ -38,11 +38,18 @@ form{
         display: block;
     }
 }
+@media only screen and (min-width: 520px){
+        font-size: 0.8rem;
+    }
+
+@media only screen and (min-width: 650px){
+        font-size: 1rem;
+    }
 `
 
 const PatientInfoStyle = styled.ul`
     width: 50vw;
-    font-size: 0.7em;
+    font-size: 0.7rem;
     background-color: rgba(255,255,255,0.7);
     border-radius: 5px;
     list-style: none;
@@ -52,11 +59,11 @@ const PatientInfoStyle = styled.ul`
     text-align: left;
 
 @media only screen and (min-width: 520px){
-    width: 50vw;
-    font-size: 0.8em;
+    width: 40vw;
+    font-size: 0.8rem;
 }
 @media only screen and (min-width: 650px){
-    font-size: 1em;
+    font-size: 1rem;
 }
 `
 const PatientEditStyle = styled.div`
@@ -64,7 +71,7 @@ form{
     max-width: 300px;
     margin: 0 auto 10px;
     background: rgba(255,255,255, 0.7);
-    font-size: 0.7em;
+    font-size: 0.7rem;
     padding: 10px;
     border-radius: 5px;
 }
@@ -74,12 +81,12 @@ div{
 }
 @media only screen and (min-width: 520px){
     form{
-        font-size: 0.8em;
+        font-size: 0.8rem;
     }
 }
 @media only screen and (min-width: 650px){
     form{
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 `
@@ -97,7 +104,7 @@ form{
     max-width: 300px;
     margin: 0 auto 10px;
     background: rgba(255,255,255, 0.7);
-    font-size: 0.7em;
+    font-size: 0.7rem;
     padding: 10px;
     border-radius: 5px;
 }
@@ -107,12 +114,12 @@ div{
 }
 @media only screen and (min-width: 520px){
     form{
-        font-size: 0.8em;
+        font-size: 0.8rem;
     }
 }
 @media only screen and (min-width: 650px){
     form{
-        font-size: 1em;
+        font-size: 1rem;
     }
 }
 `

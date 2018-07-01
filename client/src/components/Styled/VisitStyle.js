@@ -11,7 +11,7 @@ const VisitStyle = styled.div`
     margin-bottom: 1rem;
     border-radius: 5px;
     overflow: auto;
-    max-height: 74vh;
+    max-height: 72.5vh;
     font-size: 0.7rem;
     button{
         margin-left: 0;
