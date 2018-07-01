@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, green, maroon, teal } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 import LogInStyle from './Styled/LogInStyle';
+import swal from 'sweetalert';
 
 class LogIn extends Component {
     state = {
@@ -41,7 +42,7 @@ class LogIn extends Component {
         if (currentDoctor !== undefined && this.state.password === currentDoctor.password) {
             this.props.history.push(`/${currentDoctor._id}`)
         } else {
-            alert('Incorrect Name and/or Password. New User? Create a new account below')
+            swal('Incorrect Name and/or Password.', 'Try again! New User? Create a new account below')
         }
 
     }
@@ -53,9 +54,9 @@ class LogIn extends Component {
                 this.props.history.push(`/${res.data._id}`)
             })
         } else if (newDoc !== undefined) {
-            alert('Username already taken. Try another name')
+            swal('Username already taken!', 'Try another name')
         } else if (this.state.newUser.password !== this.state.newPasswordRepeat) {
-            alert('Passwords do don\'t match. Try again.')
+            swal('Passwords do don\'t match.', 'Try again.')
         }
     }
     changeView = () => {
