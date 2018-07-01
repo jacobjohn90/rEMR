@@ -14,6 +14,7 @@ class Doctor extends Component {
         password: '',
         editView: false,
         newPatientView: false,
+        deleteView: false,
         editDoc: {
             name: '',
             password: '',
@@ -79,6 +80,12 @@ class Doctor extends Component {
             patients: data
         })
     }
+    updateStateDelete = () => {
+        let deleteView = !this.state.deleteView
+        this.setState({
+            deleteView
+        })
+    }
 
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
@@ -107,23 +114,27 @@ class Doctor extends Component {
 
         return (
             <DoctorStyle>
-                <h2>Welcome {this.state.name}</h2>
-                <ThemeProvider theme={teal}>
-                    <div>
-                        <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </Button>
+                <div>
+                    <h2>Welcome {this.state.name}</h2>
+                </div>
+                <div>
+                    <ThemeProvider theme={teal}>
+                        <div>
+                            <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </Button>
 
-                        {this.state.editView
-                            ?
-                            <form onSubmit={this.handleSubmit}>
-                                <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
-                                <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
-                                <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
-                                <Button type='submit'>Save Edits</Button>
-                            </form>
-                            :
-                            null}
-                    </div>
-                </ThemeProvider>
+                            {this.state.editView
+                                ?
+                                <form onSubmit={this.handleSubmit}>
+                                    <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
+                                    <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
+                                    <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
+                                    <Button type='submit'>Save Edits</Button>
+                                </form>
+                                :
+                                null}
+                        </div>
+                    </ThemeProvider>
+                </div>
                 <div>
                     <div>
 
@@ -140,9 +151,21 @@ class Doctor extends Component {
                             :
                             null}
                     </div>
-                    <ThemeProvider theme={maroon}>
-                        <Button onClick={this.handleDelete}>Delete User</Button>
-                    </ThemeProvider>
+                    <div>
+                        <ThemeProvider theme={maroon}>
+                            {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
+                        </ThemeProvider>
+                    </div>
+                    <div>
+                        <ThemeProvider theme={green}>
+                            {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
+                        </ThemeProvider>
+                    </div>
+                    <div>
+                        <ThemeProvider theme={maroon}>
+                            {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
+                        </ThemeProvider>
+                    </div>
                 </div>
             </DoctorStyle>
         );
