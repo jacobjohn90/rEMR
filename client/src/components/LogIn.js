@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, green, maroon, teal } from './Styled/Buttons';
+import { Button, green, teal } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 import LogInStyle from './Styled/LogInStyle';
 import swal from 'sweetalert';
