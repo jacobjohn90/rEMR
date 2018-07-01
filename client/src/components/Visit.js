@@ -3,7 +3,7 @@ import axios from 'axios';
 import moment from 'moment';
 import VisitEdit from './VisitEdit';
 import { VisitStyle, VisitInfoStyle } from './Styled/VisitStyle';
-import { Button, teal } from './Styled/Buttons';
+import { Button, teal, maroon, green } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 
 class Visit extends Component {
@@ -63,7 +63,7 @@ class Visit extends Component {
         }
         return (
             <VisitStyle>
-                <h1>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h1>
+                <h2>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h2>
                 <div>
                     <h3>About This Visit</h3>
                     <VisitInfoStyle>
@@ -88,7 +88,15 @@ class Visit extends Component {
                         </div>
                     </ThemeProvider>
                 </div>
-                <button onClick={this.handleDelete}>Delete This Visit</button>
+                <ThemeProvider theme={maroon}>
+                    {this.state.deleteView? <p>Are You Sure?</p> : <Button onClick={this.updateStateDelete}>Delete This Visit</Button>}
+                </ThemeProvider>
+                <ThemeProvider theme={green}>
+                    {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
+                </ThemeProvider>
+                <ThemeProvider theme={maroon}>
+                    {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
+                </ThemeProvider>
             </VisitStyle>
         );
     }

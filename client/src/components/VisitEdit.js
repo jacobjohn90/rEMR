@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
+import { VisitEditStyle } from './Styled/VisitStyle';
+import { Button, teal } from './Styled/Buttons';
+import { ThemeProvider } from 'styled-components';
 
 class VisitEdit extends Component {
 
@@ -54,31 +57,37 @@ class VisitEdit extends Component {
     render() {
 
         return (
-            <div>
-                <div>
-                    <form onSubmit={this.handleSubmit}>
+            <VisitEditStyle>
+                <form onSubmit={this.handleSubmit}>
+                    <div>
                         <label>Date: </label>
                         <input type="date" name="date" value={moment(this.state.date).format("YYYY-MM-DD")} onChange={this.handleChange} />
-
+                    </div>
+                    <div>
                         <label>Cheif Complaint: </label>
                         <input placeholder={this.state.chiefComplaint} type="text" name="chiefComplaint" value={this.state.chiefComplaint} onChange={this.handleChange} />
-
+                    </div>
+                    <div>
                         <label>Duration: </label>
                         <input placeholder={this.state.duration} type="text" name="duration" value={this.state.duration} onChange={this.handleChange} />
-
+                    </div>
+                    <div>
                         <label>Associated Symptoms: </label>
                         <input placeholder={this.state.associatedSymptoms} type="text" name="associatedSymptoms" value={this.state.associatedSymptoms} onChange={this.handleChange} />
-
+                    </div>
+                    <div>
                         <label>Diagnosis: </label>
                         <input placeholder={this.state.diagnosis} type="text" name="diagnosis" value={this.state.diagnosis} onChange={this.handleChange} />
-
+                    </div>
+                    <div>
                         <label>Treatment: </label>
                         <input placeholder={this.state.treatment} type="text" name="treatment" value={this.state.treatment} onChange={this.handleChange} />
-
-                        <button type='submit'>Save Changes</button>
-                    </form>
-                </div>
-            </div>
+                    </div>
+                    <ThemeProvider theme={teal}>
+                        <Button type='submit'>Save Changes</Button>
+                    </ThemeProvider>
+                </form>
+            </VisitEditStyle>
         );
     }
 }
