@@ -5,7 +5,7 @@ const LogInStyle = styled.div`
     background-color: rgba(255,255,255, 0.7);
     padding: 1rem;
     min-height: 30%;
-    max-width: 75vw;
+    max-width: 60vw;
     margin: 0 auto;
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -32,6 +32,10 @@ const LogInStyle = styled.div`
     @media only screen and (min-width: 500px) {
         form{
             display: block;
+            input{
+                display: block;
+                margin: 10px auto;
+            }
         }
     }
 `
