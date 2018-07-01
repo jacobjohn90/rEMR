@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import moment from 'moment';
 import VisitEdit from './VisitEdit';
+import { VisitStyle } from './Styled/VisitStyle';
 
 class Visit extends Component {
 
@@ -52,7 +53,7 @@ class Visit extends Component {
             return null
         }
         return (
-            <div>
+            <VisitStyle>
                 <h1>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h1>
                 <div>
                     <h3>About This Visit</h3>
@@ -75,7 +76,7 @@ class Visit extends Component {
                     }
                 </div>
                 <button onClick={this.handleDelete}>Delete This Visit</button>
-            </div>
+            </VisitStyle>
         );
     }
 }

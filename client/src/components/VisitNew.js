@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { NewListStyle } from './Styled/PatientStyle';
-import { Button, teal, green } from './Styled/Buttons';
+import { Button, green } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 
 class VisitNew extends Component {
@@ -21,6 +21,7 @@ class VisitNew extends Component {
         axios.post(`/api/doctors/${doctorId}/patients/${patientId}/visits`, this.state).then((res) => {
             const currentPatient = res.data.doctor.patients.find((patient) => patient._id === patientId)
             this.props.handleUpdateStateNew(currentPatient)
+            this.props.updateStateNew()
         })
 
     }

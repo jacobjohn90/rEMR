@@ -127,7 +127,7 @@ class Patient extends Component {
                     </ThemeProvider>
                     {this.state.newView
                         ?
-                        <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} props={this.props} />
+                        <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} updateStateNew={this.updateStateNew} props={this.props} />
                         :
                         null
                     }

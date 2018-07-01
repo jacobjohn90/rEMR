@@ -9,16 +9,12 @@ max-width: 450px;
 
 div{
     display: flex;
-    /* justify-content: space-between; */
     align-items: center;
     input{
-        /* flex:1 */
         width: 200px;
     };
 }
 
-
-}
 @media (min-width: 500px) {
 div{
     display: flex;
