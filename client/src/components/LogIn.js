@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import LogInWrapper from './Styled/LogInStyle';
 import { Button, green, maroon, teal } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
+import LogInStyle from './Styled/LogInStyle';
 
 class LogIn extends Component {
     state = {
@@ -71,7 +71,7 @@ class LogIn extends Component {
     render() {
 
         return (
-            <LogInWrapper>
+            <LogInStyle>
                 <h2>LogIn</h2>
                 <form onSubmit={this.handleSubmit}>
                     <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
@@ -100,7 +100,7 @@ class LogIn extends Component {
                         </div>
                         : null}
                 </div>
-            </LogInWrapper>
+            </LogInStyle>
         );
     }
 }
