@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const Button = styled.button`
     background-color: white;
-    color: ${props=> props.theme.fc};
-    border: 2px solid ${props => props.theme.fc};
+    color: ${props=> props.theme.color};
+    border: 2px solid ${props => props.theme.color};
     border-radius: 5px;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
@@ -21,14 +21,14 @@ const Button = styled.button`
     }
 `;
 const green = {
-    fc: 'green'
+    color: 'green'
 
 }
 const maroon = {
-    fc: 'maroon'
+    color: 'maroon'
 }
 const teal = {
-    fc: 'teal'
+    color: 'teal'
 
 }
 
