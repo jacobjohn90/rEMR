@@ -81,11 +81,12 @@ class Patient extends Component {
                 <Nav />
             )
         }
-        const currentPatient = currentDoctor.patients.find((patient) => patient._id === this.props.match.params.patientId)
+        const doctorId = this.props.match.params.doctorId
+        const patientId = this.props.match.params.patientId
         const visits = this.state.patientInfo.visits.map((visit, i) => {
             return (
                 <li key={i}>
-                    <Link to={`/${currentDoctor._id}/${currentPatient._id}/${visit._id}`}>{moment(visit.date).format("MMM Do YYYY")}</Link>
+                    <Link to={`/${doctorId}/${patientId}/${visit._id}`}>{moment(visit.date).format("MMM Do YYYY")}</Link>
                     <span> Chief Complaint: {visit.chiefComplaint}</span>
                 </li>
             )
