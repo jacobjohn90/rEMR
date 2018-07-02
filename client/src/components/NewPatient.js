@@ -33,11 +33,15 @@ class NewPatient extends Component {
                 <NewPatientStyle onSubmit={this.handleSubmit}>
                     <div>
                         <label htmlFor="name">Name:</label>
-                        <input placeholder="Name" type="text" name="name" onChange={this.handleChange} required/>
+                        <input placeholder="Name" type="text" name="name" onChange={this.handleChange} required />
                     </div>
                     <div>
                         <label htmlFor="dateOfBirth">Date of Birth:</label>
-                        <input type="date" name="dateOfBirth" onChange={this.handleChange} required/>
+                        <input type="date" name="dateOfBirth" onChange={this.handleChange} required />
+                    </div>
+                    <div>
+                        <label htmlFor="sex">Sex:</label>
+                        <input placeholder="Sex" type="text" name="sex" onChange={this.handleChange} />
                     </div>
                     <div>
                         <label htmlFor="weight">Weight(lbs):</label>
@@ -57,7 +61,7 @@ class NewPatient extends Component {
                     </div>
                     <div>
                         <label htmlFor="medicalHistory">Medical History:</label>
-                        <input placeholder="Medical History" type="text" name="medicalHistory" onChange={this.handleChange} required/>
+                        <input placeholder="Medical History" type="text" name="medicalHistory" onChange={this.handleChange} required />
                     </div>
 
                     <ThemeProvider theme={green}>

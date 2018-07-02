@@ -10,7 +10,12 @@ const NavStyleWrapper = styled.div`
         padding-top: 10px;
     }
     h5{
-        margin: 0
+        margin: 0;
+        margin-bottom: 5px;
+    }
+    a{
+        text-decoration: none;
+        color: teal;
     }
 `
 

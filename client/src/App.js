@@ -7,7 +7,6 @@ import LogIn from './components/LogIn';
 import Doctor from './components/Doctor';
 import Patient from './components/Patient';
 import Visit from './components/Visit';
-import Nav from './components/Nav';
 
 class App extends Component {
   state = {
@@ -39,7 +38,6 @@ class App extends Component {
       <Router>
 
         <SwitchWrapper >
-          <Nav doctors={this.state.doctors}/>
           <Switch>
             <Route exact path='/' render={LogInComponent} />
             <Route exact path='/:doctorId' render={DoctorComponent} />

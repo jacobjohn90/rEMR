@@ -6,6 +6,7 @@ import { ThemeProvider } from 'styled-components';
 
 import NewPatient from './NewPatient';
 import DoctorStyle from './Styled/DoctorStyle';
+import Nav from './Nav';
 
 class Doctor extends Component {
 
@@ -113,61 +114,64 @@ class Doctor extends Component {
         })
 
         return (
-            <DoctorStyle>
-                <div>
-                    <h2>Welcome {this.state.name}</h2>
-                </div>
-                <div>
-                    <ThemeProvider theme={teal}>
-                        <div>
-                            <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </Button>
+            <div>
+                <Nav props={this.props} />
+                <DoctorStyle>
+                    <div>
+                        <h2>Welcome {this.state.name}</h2>
+                    </div>
+                    <div>
+                        <ThemeProvider theme={teal}>
+                            <div>
+                                <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit View" : "Edit User Info"} </Button>
 
-                            {this.state.editView
+                                {this.state.editView
+                                    ?
+                                    <form onSubmit={this.handleSubmit}>
+                                        <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
+                                        <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
+                                        <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
+                                        <Button type='submit'>Save Edits</Button>
+                                    </form>
+                                    :
+                                    null}
+                            </div>
+                        </ThemeProvider>
+                    </div>
+                    <div>
+                        <div>
+
+                            <h3>Your current Patient List is:</h3>
+                            <ul>
+                                {patient}
+                            </ul>
+                            <ThemeProvider theme={green}>
+                                <Button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </Button>
+                            </ThemeProvider>
+                            {this.state.newPatientView
                                 ?
-                                <form onSubmit={this.handleSubmit}>
-                                    <input placeholder={this.state.name} type="text" name="name" value={this.state.editDoc.name} onChange={this.handleChange} />
-                                    <input placeholder={this.state.password} type="text" name="password" value={this.state.editDoc.password} onChange={this.handleChange} />
-                                    <input placeholder="Repeat Password" type="text" name="passwordRepeat" value={this.state.editDoc.passwordRepeat} onChange={this.handleChange} />
-                                    <Button type='submit'>Save Edits</Button>
-                                </form>
+                                <NewPatient updateStateNewPatient={this.updateStateNewPatient} handleNewPatientView={this.handleNewPatientView} props={this.props} />
                                 :
                                 null}
                         </div>
-                    </ThemeProvider>
-                </div>
-                <div>
-                    <div>
-
-                        <h3>Your current Patient List is:</h3>
-                        <ul>
-                            {patient}
-                        </ul>
-                        <ThemeProvider theme={green}>
-                            <Button onClick={this.handleNewPatientView}>{this.state.newPatientView ? "Close New Patient Form" : "Add New Patient"} </Button>
-                        </ThemeProvider>
-                        {this.state.newPatientView
-                            ?
-                            <NewPatient updateStateNewPatient={this.updateStateNewPatient} handleNewPatientView={this.handleNewPatientView} props={this.props} />
-                            :
-                            null}
+                        <div>
+                            <ThemeProvider theme={maroon}>
+                                {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
+                            </ThemeProvider>
+                        </div>
+                        <div>
+                            <ThemeProvider theme={green}>
+                                {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
+                            </ThemeProvider>
+                        </div>
+                        <div>
+                            <ThemeProvider theme={maroon}>
+                                {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
+                            </ThemeProvider>
+                        </div>
                     </div>
-                    <div>
-                        <ThemeProvider theme={maroon}>
-                            {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
-                        </ThemeProvider>
-                    </div>
-                    <div>
-                        <ThemeProvider theme={green}>
-                            {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
-                        </ThemeProvider>
-                    </div>
-                    <div>
-                        <ThemeProvider theme={maroon}>
-                            {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
-                        </ThemeProvider>
-                    </div>
-                </div>
-            </DoctorStyle>
+                </DoctorStyle>
+            </div>
         );
     }
 }

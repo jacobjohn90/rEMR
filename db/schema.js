@@ -35,6 +35,10 @@ const PatientSchema = new Schema({
         type: Date,
         required: true
     },
+    sex: {
+        type: String,
+        require: true
+    },
     weight: {
         type: Number
     },

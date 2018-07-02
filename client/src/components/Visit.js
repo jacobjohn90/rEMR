@@ -5,6 +5,7 @@ import VisitEdit from './VisitEdit';
 import { VisitStyle, VisitInfoStyle } from './Styled/VisitStyle';
 import { Button, teal, maroon, green } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
+import Nav from './Nav';
 
 class Visit extends Component {
 
@@ -62,42 +63,45 @@ class Visit extends Component {
             return null
         }
         return (
-            <VisitStyle>
-                <h2>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h2>
-                <div>
-                    <h3>About This Visit</h3>
-                    <VisitInfoStyle>
-                        <li>Date: {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</li>
-                        <li>Chief Complaint: {this.state.visitInfo.chiefComplaint}</li>
-                        <li>Duration: {this.state.visitInfo.duration}</li>
-                        <li>Associated Symptoms: {this.state.visitInfo.associatedSymptoms}</li>
-                        <li>Diagnosis: {this.state.visitInfo.diagnosis}</li>
-                        <li>Treatment: {this.state.visitInfo.treatment}</li>
-                    </VisitInfoStyle>
-                </div>
-                <div>
-                    <ThemeProvider theme={teal}>
-                        <div>
-                            <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit Form" : "Edit Visit Info"}</Button>
-                            {this.state.editView
-                                ?
-                                <VisitEdit updateStateEdit={this.updateStateEdit} handleEditView={this.handleEditView} props={this.props} />
-                                :
-                                null
-                            }
-                        </div>
+            <div>
+                <Nav props={this.props}/>
+                <VisitStyle>
+                    <h2>{this.state.patientInfo.name}'s visit on {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</h2>
+                    <div>
+                        <h3>About This Visit</h3>
+                        <VisitInfoStyle>
+                            <li>Date: {moment(this.state.visitInfo.date).format("MMM Do YYYY")}</li>
+                            <li>Chief Complaint: {this.state.visitInfo.chiefComplaint}</li>
+                            <li>Duration: {this.state.visitInfo.duration}</li>
+                            <li>Associated Symptoms: {this.state.visitInfo.associatedSymptoms}</li>
+                            <li>Diagnosis: {this.state.visitInfo.diagnosis}</li>
+                            <li>Treatment: {this.state.visitInfo.treatment}</li>
+                        </VisitInfoStyle>
+                    </div>
+                    <div>
+                        <ThemeProvider theme={teal}>
+                            <div>
+                                <Button onClick={this.handleEditView}>{this.state.editView ? "Close Edit Form" : "Edit Visit Info"}</Button>
+                                {this.state.editView
+                                    ?
+                                    <VisitEdit updateStateEdit={this.updateStateEdit} handleEditView={this.handleEditView} props={this.props} />
+                                    :
+                                    null
+                                }
+                            </div>
+                        </ThemeProvider>
+                    </div>
+                    <ThemeProvider theme={maroon}>
+                        {this.state.deleteView ? <p>Are You Sure?</p> : <Button onClick={this.updateStateDelete}>Delete This Visit</Button>}
                     </ThemeProvider>
-                </div>
-                <ThemeProvider theme={maroon}>
-                    {this.state.deleteView? <p>Are You Sure?</p> : <Button onClick={this.updateStateDelete}>Delete This Visit</Button>}
-                </ThemeProvider>
-                <ThemeProvider theme={green}>
-                    {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
-                </ThemeProvider>
-                <ThemeProvider theme={maroon}>
-                    {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
-                </ThemeProvider>
-            </VisitStyle>
+                    <ThemeProvider theme={green}>
+                        {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
+                    </ThemeProvider>
+                    <ThemeProvider theme={maroon}>
+                        {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
+                    </ThemeProvider>
+                </VisitStyle>
+            </div>
         );
     }
 }

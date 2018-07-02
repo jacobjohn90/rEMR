@@ -16,6 +16,7 @@ const visit1 = new VisitModel({
 const jeremy = new PatientModel({
     name: 'Jeremy Edwards',
     dateOfBirth: new Date(2005, 4, 5),
+    sex: 'Male',
     weight: 165,
     height: 70,
     occupation: 'Janitor',

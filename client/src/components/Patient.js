@@ -8,6 +8,7 @@ import { ThemeProvider } from 'styled-components';
 import PatientEdit from './PatientEdit';
 import VisitNew from './VisitNew';
 import { PatientStyle, PatientInfoStyle, VisitListStyle } from './Styled/PatientStyle';
+import Nav from './Nav';
 
 class Patient extends Component {
 
@@ -86,52 +87,56 @@ class Patient extends Component {
             )
         })
         return (
-            <PatientStyle>
-                <h1>{this.state.patientInfo.name}'s Chart</h1>
-                <PatientInfoStyle>
-                    <li>Date of Birth: {moment(this.state.patientInfo.dateOfBirth).format("MMM Do YYYY")}</li>
-                    <li>Weight: {this.state.patientInfo.weight} lbs</li>
-                    <li>Height: {this.state.patientInfo.height}in</li>
-                    <li>Occupation: {this.state.patientInfo.occupation}</li>
-                    <li>Marital Status: {this.state.patientInfo.maritalStatus}</li>
-                    <li>Medical History: {this.state.patientInfo.medicalHistory}</li>
-                </PatientInfoStyle>
-                <div>
-                    <ThemeProvider theme={teal}>
-                        <Button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</Button>
+            <div>
+                <Nav props={this.props}/>
+                <PatientStyle>
+                    <h1>{this.state.patientInfo.name}'s Chart</h1>
+                    <PatientInfoStyle>
+                        <li>Date of Birth: {moment(this.state.patientInfo.dateOfBirth).format("MMM Do YYYY")}</li>
+                        <li>Sex: {this.state.patientInfo.sex}</li>
+                        <li>Weight: {this.state.patientInfo.weight} lbs</li>
+                        <li>Height: {this.state.patientInfo.height}in</li>
+                        <li>Occupation: {this.state.patientInfo.occupation}</li>
+                        <li>Marital Status: {this.state.patientInfo.maritalStatus}</li>
+                        <li>Medical History: {this.state.patientInfo.medicalHistory}</li>
+                    </PatientInfoStyle>
+                    <div>
+                        <ThemeProvider theme={teal}>
+                            <Button onClick={this.handlePatientView}>{this.state.editView ? "Close Patient Form" : "Edit Patient Info"}</Button>
+                        </ThemeProvider>
+                        {this.state.editView
+                            ?
+                            <PatientEdit updateStateEdit={this.updateStateEdit} handlePatientView={this.handlePatientView} props={this.props} />
+                            :
+                            null
+                        }
+                    </div>
+                    <ThemeProvider theme={maroon}>
+                        {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
                     </ThemeProvider>
-                    {this.state.editView
-                        ?
-                        <PatientEdit updateStateEdit={this.updateStateEdit} handlePatientView={this.handlePatientView} props={this.props} />
-                        :
-                        null
-                    }
-                </div>
-                <ThemeProvider theme={maroon}>
-                    {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
-                </ThemeProvider>
-                <ThemeProvider theme={green}>
-                    {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
-                </ThemeProvider>
-                <ThemeProvider theme={maroon}>
-                    {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
-                </ThemeProvider>
-                <h3>All Visits Recorded</h3>
-                <VisitListStyle>
-                    {visits}
-                </VisitListStyle>
-                <div>
                     <ThemeProvider theme={green}>
-                        <Button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </Button>
+                        {this.state.deleteView ? <Button onClick={this.updateStateDelete}>No!</Button> : null}
                     </ThemeProvider>
-                    {this.state.newView
-                        ?
-                        <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} updateStateNew={this.updateStateNew} props={this.props} />
-                        :
-                        null
-                    }
-                </div>
-            </PatientStyle>
+                    <ThemeProvider theme={maroon}>
+                        {this.state.deleteView ? <Button onClick={this.handleDelete}>Yes. Delete Me!</Button> : null}
+                    </ThemeProvider>
+                    <h3>All Visits Recorded</h3>
+                    <VisitListStyle>
+                        {visits}
+                    </VisitListStyle>
+                    <div>
+                        <ThemeProvider theme={green}>
+                            <Button onClick={this.updateStateNew}>{this.state.newView ? "Close New Visit Form" : "Create New Visit"} </Button>
+                        </ThemeProvider>
+                        {this.state.newView
+                            ?
+                            <VisitNew handleUpdateStateNew={this.handleUpdateStateNew} updateStateNew={this.updateStateNew} props={this.props} />
+                            :
+                            null
+                        }
+                    </div>
+                </PatientStyle>
+            </div>
         );
     }
 }

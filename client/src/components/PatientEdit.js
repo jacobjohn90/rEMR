@@ -10,6 +10,7 @@ class PatientEdit extends Component {
     state = {
         name: '',
         dateOfBirth: '',
+        sex: '',
         weight: '',
         height: '',
         occupation: '',
@@ -26,6 +27,7 @@ class PatientEdit extends Component {
             this.setState({
                 name: res.data.patient.name,
                 dateOfBirth: res.data.patient.dateOfBirth,
+                sex: res.data.patient.sex,
                 weight: res.data.patient.weight,
                 height: res.data.patient.height,
                 occupation: res.data.patient.occupation,
@@ -68,6 +70,10 @@ class PatientEdit extends Component {
                     <div>
                         <label>Date of Birth: </label>
                         <input placeholder={this.state.dateOfBirth} type="date" name="dateOfBirth" value={moment(this.state.dateOfBirth).format("YYYY-MM-DD")} onChange={this.handleChange} />
+                    </div>
+                    <div>
+                        <label htmlFor="sex">Sex:</label>
+                        <input placeholder={this.state.sex} type="text" name="sex" value={this.state.sex} onChange={this.handleChange} />
                     </div>
                     <div>
                         <label>Weight: </label>

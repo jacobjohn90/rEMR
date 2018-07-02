@@ -4,6 +4,7 @@ import { Button, green, teal } from './Styled/Buttons';
 import { ThemeProvider } from 'styled-components';
 import LogInStyle from './Styled/LogInStyle';
 import swal from 'sweetalert';
+import Nav from './Nav';
 
 class LogIn extends Component {
     state = {
@@ -72,36 +73,39 @@ class LogIn extends Component {
     render() {
 
         return (
-            <LogInStyle>
-                <h2>LogIn</h2>
-                <form onSubmit={this.handleSubmit}>
-                    <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-                    <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <ThemeProvider theme={green}>
-                        <Button type='submit'>Log In</Button>
+            <div>
+                <Nav props={this.props}/>
+                <LogInStyle>
+                    <h2>LogIn</h2>
+                    <form onSubmit={this.handleSubmit}>
+                        <input placeholder="Name" type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+                        <input placeholder="Password" type="password" name="password" value={this.state.password} onChange={this.handleChange} />
+                        <ThemeProvider theme={green}>
+                            <Button type='submit'>Log In</Button>
+                        </ThemeProvider>
+                    </form>
+                    <br />
+                    <ThemeProvider theme={teal}>
+                        <Button onClick={this.changeView}>{this.state.createShow ? "Hide Form" : "Add New User"}</Button>
                     </ThemeProvider>
-                </form>
-                <br />
-                <ThemeProvider theme={teal}>
-                    <Button onClick={this.changeView}>{this.state.createShow ? "Hide Form" : "Add New User"}</Button>
-                </ThemeProvider>
-                <div>
-                    {this.state.createShow
-                        ?
-                        <div>
-                            <h2>Create New User</h2>
-                            <form onSubmit={this.handleSubmitNew}>
-                                <input placeholder="Name" type="text" name="name" value={this.state.newUser.name} onChange={this.handleChangeNew} required/>
-                                <input placeholder="Password" type="password" name="password" value={this.state.newUser.password} onChange={this.handleChangeNew} required/>
-                                <input placeholder="Repeat Password" type="password" name="passwordRepeat" value={this.state.passwordRepeat} onChange={this.handleChangeNew} required/>
-                                <ThemeProvider theme={teal}>
-                                    <Button type='submit'>Create and Login</Button>
-                                </ThemeProvider>
-                            </form>
-                        </div>
-                        : null}
-                </div>
-            </LogInStyle>
+                    <div>
+                        {this.state.createShow
+                            ?
+                            <div>
+                                <h2>Create New User</h2>
+                                <form onSubmit={this.handleSubmitNew}>
+                                    <input placeholder="Name" type="text" name="name" value={this.state.newUser.name} onChange={this.handleChangeNew} required />
+                                    <input placeholder="Password" type="password" name="password" value={this.state.newUser.password} onChange={this.handleChangeNew} required />
+                                    <input placeholder="Repeat Password" type="password" name="passwordRepeat" value={this.state.passwordRepeat} onChange={this.handleChangeNew} required />
+                                    <ThemeProvider theme={teal}>
+                                        <Button type='submit'>Create and Login</Button>
+                                    </ThemeProvider>
+                                </form>
+                            </div>
+                            : null}
+                    </div>
+                </LogInStyle>
+            </div>
         );
     }
 }
