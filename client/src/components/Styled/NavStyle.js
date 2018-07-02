@@ -11,7 +11,17 @@ const NavStyleWrapper = styled.div`
     }
     h5{
         margin: 0;
-        margin-bottom: 5px;
+        /* margin-bottom: 5px; */
+    }
+    div{
+        display: inline-flex;
+        align-content: center;
+        margin-top: 3px;
+    }
+    img{
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
     }
     a{
         text-decoration: none;
