@@ -32,3 +32,5 @@ Here's the ERD for rEMR!
 * SweetAlert.js
 * Styled Components
 * Axios
+
+<div>Back Icon made from <a href="http://www.onlinewebfonts.com/icon">Icon Fonts</a> is licensed by CC BY 3.0</div>
