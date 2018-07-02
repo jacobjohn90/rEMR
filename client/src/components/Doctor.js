@@ -160,7 +160,7 @@ class Doctor extends Component {
                         </div>
                         <div>
                             <ThemeProvider theme={maroon}>
-                                {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete Patient</Button> : <p>Are You Sure?</p>}
+                                {!this.state.deleteView ? <Button onClick={this.updateStateDelete}>Delete User</Button> : <p>Are You Sure?</p>}
                             </ThemeProvider>
                         </div>
                         <div>
