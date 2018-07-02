@@ -41,6 +41,7 @@ class VisitEdit extends Component {
         })
 
     }
+    
     handleSubmit = (event) => {
         event.preventDefault()
         const doctorId = this.props.props.match.params.doctorId

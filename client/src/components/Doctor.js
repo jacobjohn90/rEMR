@@ -26,9 +26,7 @@ class Doctor extends Component {
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         axios.delete(`/api/doctors/${doctorId}`).then((res) => {
-
             this.props.history.push('/')
-
         })
     }
 
@@ -38,8 +36,8 @@ class Doctor extends Component {
         this.setState({
             editView
         })
-
     }
+
     handleNewPatientView = () => {
         let newPatientView = this.state.newPatientView
         newPatientView = !this.state.newPatientView
@@ -76,11 +74,13 @@ class Doctor extends Component {
             alert('Username Already Taken. Try your currently used name or another name')
         }
     }
+
     updateStateNewPatient = (data) => {
         this.setState({
             patients: data
         })
     }
+
     updateStateDelete = () => {
         let deleteView = !this.state.deleteView
         this.setState({
@@ -106,6 +106,7 @@ class Doctor extends Component {
                 <Nav />
             )
         }
+
         const doctorId = this.props.match.params.doctorId
         const patient = this.state.patients.map((patient, i) => {
             return (
@@ -116,6 +117,7 @@ class Doctor extends Component {
         })
 
         return (
+            
             <div>
                 <Nav props={this.props} />
                 <DoctorStyle>

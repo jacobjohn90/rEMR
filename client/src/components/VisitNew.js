@@ -14,6 +14,7 @@ class VisitNew extends Component {
             [inputName]: userInput
         })
     }
+    
     handleSubmit = (event) => {
         event.preventDefault()
         const doctorId = this.props.props.match.params.doctorId
@@ -23,7 +24,6 @@ class VisitNew extends Component {
             this.props.handleUpdateStateNew(currentPatient)
             this.props.updateStateNew()
         })
-
     }
 
     render() {

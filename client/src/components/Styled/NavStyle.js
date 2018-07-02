@@ -11,7 +11,6 @@ const NavStyleWrapper = styled.div`
     }
     h5{
         margin: 0;
-        /* margin-bottom: 5px; */
     }
     div{
         display: inline-flex;

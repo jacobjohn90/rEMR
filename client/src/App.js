@@ -36,7 +36,6 @@ class App extends Component {
 
     return (
       <Router>
-
         <SwitchWrapper >
           <Switch>
             <Route exact path='/' render={LogInComponent} />
@@ -45,7 +44,6 @@ class App extends Component {
             <Route exact path='/:doctorId/:patientId/:visitId' render={VisitComponent} />
           </Switch>
         </SwitchWrapper>
-
       </Router>
     );
   }

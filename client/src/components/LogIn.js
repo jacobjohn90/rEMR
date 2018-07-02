@@ -7,6 +7,7 @@ import swal from 'sweetalert';
 import Nav from './Nav';
 
 class LogIn extends Component {
+    
     state = {
         name: '',
         password: '',
@@ -27,6 +28,7 @@ class LogIn extends Component {
             [inputName]: userInput
         })
     }
+
     handleChangeNew = (event) => {
         const inputName = event.target.name
         const userInput = event.target.value
@@ -45,8 +47,8 @@ class LogIn extends Component {
         } else {
             swal('Incorrect Name and/or Password.', 'Try again! New User? Create a new account below')
         }
-
     }
+
     handleSubmitNew = (event) => {
         event.preventDefault()
         const newDoc = this.props.doctors.find((doctor) => doctor.name === this.state.newUser.name)
@@ -60,15 +62,14 @@ class LogIn extends Component {
             swal('Passwords do don\'t match.', 'Try again.')
         }
     }
+
     changeView = () => {
         let createShow = this.state.createShow
         createShow = !this.state.createShow
         this.setState({
             createShow
         })
-
     }
-
 
     render() {
 

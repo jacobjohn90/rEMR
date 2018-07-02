@@ -19,17 +19,15 @@ const Button = styled.button`
         background-color: black;
         color: white;
     }
-`;
+`
 const green = {
     color: 'green'
-
 }
 const maroon = {
     color: 'maroon'
 }
 const teal = {
     color: 'teal'
-
 }
 
 export {

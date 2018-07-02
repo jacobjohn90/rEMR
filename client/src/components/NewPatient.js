@@ -25,10 +25,9 @@ class NewPatient extends Component {
         })
     }
 
-
     render() {
-        return (
 
+        return (
             <div>
                 <NewPatientStyle onSubmit={this.handleSubmit}>
                     <div>
@@ -63,7 +62,6 @@ class NewPatient extends Component {
                         <label htmlFor="medicalHistory">Medical History:</label>
                         <input placeholder="Medical History" type="text" name="medicalHistory" onChange={this.handleChange} required />
                     </div>
-
                     <ThemeProvider theme={green}>
                         <Button type='submit'>Save New Patient</Button>
                     </ThemeProvider>

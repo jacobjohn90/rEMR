@@ -33,7 +33,7 @@ const DoctorStyle = styled.div`
             padding: 0.5rem 1rem;
             text-align: left;
             min-width: 50px;
-            }
+        }
     }
     @media only screen and (min-width: 500px) {
         form{

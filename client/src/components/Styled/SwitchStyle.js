@@ -6,7 +6,6 @@ const StyleWrapper = styled.div`
     height: 100vh;
     background-image: url(${img});
     background-size: cover;
-    
     h2{
         margin: 0;
         padding: 10px;
@@ -15,5 +14,4 @@ const StyleWrapper = styled.div`
         background-image: url(${bigImg})
     }
 `
-
 export default StyleWrapper

@@ -42,12 +42,14 @@ class Patient extends Component {
             editView
         })
     }
+
     updateStateDelete = () => {
         let deleteView = !this.state.deleteView
         this.setState({
             deleteView
         })
     }
+
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
@@ -57,11 +59,13 @@ class Patient extends Component {
 
         })
     }
+
     handleUpdateStateNew = (data) => {
         this.setState({
             patientInfo: data
         })
     }
+
     updateStateNew = () => {
         let newView = !this.state.newView
         this.setState({
@@ -70,17 +74,20 @@ class Patient extends Component {
     }
 
     render() {
+
         const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
         if (currentDoctor === undefined) {
             return (
                 <Nav />
             )
         }
+
         if (this.state.patientInfo.visits === undefined) {
             return (
                 <Nav />
             )
         }
+
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
         const visits = this.state.patientInfo.visits.map((visit, i) => {
@@ -91,6 +98,7 @@ class Patient extends Component {
                 </li>
             )
         })
+        
         return (
             <div>
                 <Nav props={this.props}/>

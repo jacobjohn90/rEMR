@@ -18,8 +18,7 @@ class PatientEdit extends Component {
         medicalHistory: '',
         visits: []
     }
-
-
+    
     componentDidMount() {
         const doctorId = this.props.props.match.params.doctorId
         const patientId = this.props.props.match.params.patientId

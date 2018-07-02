@@ -5,6 +5,7 @@ import { withRouter, Link } from 'react-router-dom';
 import backImg from '../Images/backButton.svg'
 
 class Nav extends Component {
+    
     state = {
         name: '',
         patient: '',

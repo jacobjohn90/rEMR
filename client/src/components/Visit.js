@@ -15,6 +15,7 @@ class Visit extends Component {
         editView: false,
         deleteView: false,
     }
+
     componentDidMount() {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
@@ -43,6 +44,7 @@ class Visit extends Component {
             editView
         })
     }
+
     handleDelete = () => {
         const doctorId = this.props.match.params.doctorId
         const patientId = this.props.match.params.patientId
@@ -51,6 +53,7 @@ class Visit extends Component {
             this.props.history.push(`/${doctorId}/${patientId}`)
         })
     }
+
     updateStateDelete = () => {
         let deleteView = !this.state.deleteView
         this.setState({
@@ -59,11 +62,13 @@ class Visit extends Component {
     }
 
     render() {
+
         if (this.state.visitInfo._id === undefined) {
             return (
                 <Nav />
             )
         }
+        
         return (
             <div>
                 <Nav props={this.props}/>
