@@ -39,7 +39,7 @@ class App extends Component {
       <Router>
 
         <SwitchWrapper >
-          <Nav />
+          <Nav doctors={this.state.doctors}/>
           <Switch>
             <Route exact path='/' render={LogInComponent} />
             <Route exact path='/:doctorId' render={DoctorComponent} />
