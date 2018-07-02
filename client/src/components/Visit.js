@@ -60,7 +60,9 @@ class Visit extends Component {
 
     render() {
         if (this.state.visitInfo._id === undefined) {
-            return null
+            return (
+                <Nav />
+            )
         }
         return (
             <div>

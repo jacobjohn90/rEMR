@@ -17,12 +17,21 @@ class Nav extends Component {
 
     render() {
 
+        if (this.props.props === undefined) {
+            return (
+                <NavStyleWrapper>
+                    <h1>rEMR</h1>
+                    <h5>react Electronic Medical Records</h5>
+                </NavStyleWrapper>
+            )
+        }
+
         return (
             <NavStyleWrapper>
                 <h1>rEMR</h1>
                 <h5>react Electronic Medical Records</h5>
                 <div>
-                    {this.props.props.match.params.patientId? <img onClick={this.backFc} src={backImg} alt=""/> : null}
+                    {this.props.props.match.params.patientId ? <img onClick={this.backFc} src={backImg} alt="" /> : null}
                     {this.props.props.match.params.doctorId ? <Link to='/'>Log Out</Link> : null}
                 </div>
             </NavStyleWrapper>

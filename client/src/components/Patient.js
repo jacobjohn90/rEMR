@@ -72,10 +72,14 @@ class Patient extends Component {
     render() {
         const currentDoctor = this.props.doctors.find((doctor) => doctor._id === this.props.match.params.doctorId)
         if (currentDoctor === undefined) {
-            return null
+            return (
+                <Nav />
+            )
         }
         if (this.state.patientInfo.visits === undefined) {
-            return null
+            return (
+                <Nav />
+            )
         }
         const currentPatient = currentDoctor.patients.find((patient) => patient._id === this.props.match.params.patientId)
         const visits = this.state.patientInfo.visits.map((visit, i) => {
