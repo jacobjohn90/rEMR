@@ -22,6 +22,9 @@ const NavStyleWrapper = styled.div`
         width: 20px;
         height: 20px;
         margin-right: 10px;
+        :hover{
+            cursor: pointer 
+        };
     }
     a{
         text-decoration: none;
